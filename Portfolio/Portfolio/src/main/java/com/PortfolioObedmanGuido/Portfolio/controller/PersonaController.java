@@ -63,6 +63,6 @@ public class PersonaController {
         if(!personaService.existeId(id))
             return new ResponseEntity(new Mensaje("La persona no existe (id)."), HttpStatus.NOT_FOUND);
         personaService.borrarPersona(id);
-        return new ResponseEntity(new Mensaje("Persona eliminada."), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Persona borrada."), HttpStatus.OK);
     }
 }

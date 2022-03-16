@@ -36,7 +36,7 @@ public class PersonaController {
         if(StringUtils.isBlank(persona.getFullname()))
             return new ResponseEntity(new Mensaje("Tiene que poner el nombre completo (fullname)."), HttpStatus.BAD_REQUEST);
         if(personaService.existeNombreCompleto(persona.getFullname()))
-            return new ResponseEntity(new Mensaje("Esa persona (fullname) existe."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa persona (fullname) ya existe."), HttpStatus.BAD_REQUEST);
         personaService.crearPersona(persona);
         return new ResponseEntity(new Mensaje("Persona creada."), HttpStatus.CREATED);
     }

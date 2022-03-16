@@ -36,7 +36,7 @@ public class EducacionController {
         if(StringUtils.isBlank(educacion.getTitle()))
             return new ResponseEntity(new Mensaje("Tiene que poner el título (title)."), HttpStatus.BAD_REQUEST);
         if(educacionService.existeTitulo(educacion.getTitle()))
-            return new ResponseEntity(new Mensaje("Esa educación (title) existe."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa educación/título (title) ya existe."), HttpStatus.BAD_REQUEST);
         educacionService.crearEducacion(educacion);
         return new ResponseEntity(new Mensaje("Educación creada."), HttpStatus.CREATED);
     }

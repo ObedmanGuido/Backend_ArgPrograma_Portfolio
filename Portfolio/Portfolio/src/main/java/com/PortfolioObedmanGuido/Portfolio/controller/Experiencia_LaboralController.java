@@ -38,7 +38,7 @@ public class Experiencia_LaboralController {
         if(StringUtils.isBlank(experiencia_laboral.getPosition()))
             return new ResponseEntity(new Mensaje("Tiene que poner la posición (position)."), HttpStatus.BAD_REQUEST);
         if(experiencia_laboralService.existePosicion(experiencia_laboral.getPosition()))
-            return new ResponseEntity(new Mensaje("Esa posición (position) existe."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa posición (position) ya existe."), HttpStatus.BAD_REQUEST);
         experiencia_laboralService.crearExperiencia_Laboral(experiencia_laboral);
         return new ResponseEntity(new Mensaje("Experiencia laboral creada."), HttpStatus.CREATED);
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/personas")
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200/")
 public class PersonaController {
     @Autowired
     PersonaService personaService;
@@ -54,6 +54,8 @@ public class PersonaController {
         personaUpdate.setProfilepicture(persona.getProfilepicture());
         personaUpdate.setTitle(persona.getTitle());
         personaUpdate.setPosition(persona.getPosition());
+        personaUpdate.setBannerpicture(persona.getBannerpicture());
+        personaUpdate.setAboutpersona(persona.getAboutpersona());
         personaService.crearPersona(personaUpdate);
         return new ResponseEntity(new Mensaje("Persona actualizada."), HttpStatus.CREATED);
     }

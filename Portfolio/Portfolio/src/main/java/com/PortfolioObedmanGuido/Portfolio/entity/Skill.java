@@ -1,8 +1,11 @@
 package com.PortfolioObedmanGuido.Portfolio.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter @Setter
 @Entity
@@ -12,12 +15,18 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(unique=true)
+    @Column(name="skillname")
     private String skillname;
-    
+    @Column(name="levelname")
     private String levelname;
-    
+    @Column(name="levelnumber")
     private int levelnumber;
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "persona_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Persona persona;
 
     public Skill() {
     }

@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -49,7 +50,8 @@ public class SkillController {
         Skill skill = skillService.buscarId(id).get();
         return new ResponseEntity<Skill>(skill, HttpStatus.OK);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{personaId}/skill/nuevo")
     public ResponseEntity<Skill> createSkill(@PathVariable(value = "personaId") Long personaId,
             @RequestBody Skill skillRequest){
@@ -59,7 +61,8 @@ public class SkillController {
         }).orElseThrow(() -> new ResourceNotFoundException("No encontrada persona con id " + personaId));
         return new ResponseEntity<>(skill, HttpStatus.CREATED);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/skill/actualizar/{id}")
     public ResponseEntity<?> update(@RequestBody Skill skill, @PathVariable("id") Long id){
         if(!skillService.existeId(id))
@@ -74,6 +77,7 @@ public class SkillController {
         return new ResponseEntity(new Mensaje("Skill actualizado."), HttpStatus.CREATED);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/skill/borrar/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         if(!skillService.existeId(id))
@@ -82,6 +86,7 @@ public class SkillController {
         return new ResponseEntity(new Mensaje("Skill borrado."), HttpStatus.OK);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{personaId}/skill/borrar")
     public ResponseEntity<List<Skill>> deleteAllSkillOfPersona(@PathVariable(value = "personaId") Long personaId) {
         if (!personaRepository.existsById(personaId)){

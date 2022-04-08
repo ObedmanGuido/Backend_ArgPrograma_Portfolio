@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,7 +31,8 @@ public class PersonaController {
         Persona persona = personaService.buscarId(id).get();
         return new ResponseEntity<Persona>(persona, HttpStatus.OK);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/nuevo")
     public ResponseEntity<?> create(@RequestBody Persona persona){
         if(StringUtils.isBlank(persona.getFullname()))
@@ -40,7 +42,8 @@ public class PersonaController {
         personaService.crearPersona(persona);
         return new ResponseEntity(new Mensaje("Persona creada."), HttpStatus.CREATED);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<?> update(@RequestBody Persona persona, @PathVariable("id") Long id){
         if(!personaService.existeId(id))
@@ -59,7 +62,8 @@ public class PersonaController {
         personaService.crearPersona(personaUpdate);
         return new ResponseEntity(new Mensaje("Persona actualizada."), HttpStatus.CREATED);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/borrar/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         if(!personaService.existeId(id))

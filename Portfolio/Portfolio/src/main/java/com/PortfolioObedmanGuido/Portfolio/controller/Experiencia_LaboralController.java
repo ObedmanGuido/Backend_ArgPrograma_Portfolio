@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -49,7 +50,8 @@ public class Experiencia_LaboralController {
         Experiencia_Laboral experiencia_laboral = experiencia_laboralService.buscarId(id).get();
         return new ResponseEntity<Experiencia_Laboral>(experiencia_laboral, HttpStatus.OK);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{personaId}/experiencia-laboral/nuevo")
     public ResponseEntity<Experiencia_Laboral> createExperiencia_Laboral(@PathVariable(value = "personaId") Long personaId,
             @RequestBody Experiencia_Laboral experiencia_laboralRequest){
@@ -59,7 +61,8 @@ public class Experiencia_LaboralController {
         }).orElseThrow(() -> new ResourceNotFoundException("No encontrada persona con id " + personaId));
         return new ResponseEntity<>(experiencia_laboral, HttpStatus.CREATED); 
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/experiencia-laboral/actualizar/{id}")
     public ResponseEntity<?> update(@RequestBody Experiencia_Laboral experiencia_laboral, @PathVariable("id") Long id){
         if(!experiencia_laboralService.existeId(id))
@@ -80,6 +83,7 @@ public class Experiencia_LaboralController {
         return new ResponseEntity(new Mensaje("Experiencia laboral actualizada."), HttpStatus.CREATED);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/experiencia-laboral/borrar/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         if(!experiencia_laboralService.existeId(id))
@@ -88,6 +92,7 @@ public class Experiencia_LaboralController {
         return new ResponseEntity(new Mensaje("Experiencia laboral borrada."), HttpStatus.OK);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{personaId}/experiencia-laboral/borrar")
     public ResponseEntity<List<Experiencia_Laboral>> deleteAllExperiencia_LaboralOfPersona(@PathVariable(value = "personaId") Long personaId) {
         if (!personaRepository.existsById(personaId)){

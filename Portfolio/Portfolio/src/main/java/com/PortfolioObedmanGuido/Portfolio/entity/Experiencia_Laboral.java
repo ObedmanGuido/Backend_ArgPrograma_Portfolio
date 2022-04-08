@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
+/*import org.hibernate.validator.constraints.Length; Comentado por comentar dependencia org.hibernate.validator*/
 
 @Getter @Setter
 @Entity
@@ -28,14 +28,14 @@ public class Experiencia_Laboral {
     @Column(name="startmonth")
     private String startmonth;
     @NotEmpty
-    @Length(min=4, max = 4)
+    /*@Length(min=4, max = 4) Comentado por comentar dependencia org.hibernate.validator*/
     @Column(name="startyear")
     private int startyear;
     @NotEmpty
     @Column(name="endmonth")
     private String endmonth;
     @NotEmpty
-    @Length(min=4, max = 4)
+    /*@Length(min=4, max = 4) Comentado por comentar dependencia org.hibernate.validator*/
     @Column(name="endyear")
     private int endyear;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

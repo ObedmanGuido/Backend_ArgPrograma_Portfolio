@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -49,7 +50,8 @@ public class EducacionController {
         Educacion educacion = educacionService.buscarId(id).get();
         return new ResponseEntity<Educacion>(educacion, HttpStatus.OK);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{personaId}/educacion/nuevo")
     public ResponseEntity<Educacion> createEducacion(@PathVariable(value = "personaId") Long personaId,
             @RequestBody Educacion educacionRequest){
@@ -59,7 +61,8 @@ public class EducacionController {
         }).orElseThrow(() -> new ResourceNotFoundException("No encontrada persona con id " + personaId));
         return new ResponseEntity<>(educacion, HttpStatus.CREATED);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/educacion/actualizar/{id}")
     public ResponseEntity<?> update(@RequestBody Educacion educacion, @PathVariable("id") Long id){
         if(!educacionService.existeId(id))
@@ -78,6 +81,7 @@ public class EducacionController {
         return new ResponseEntity(new Mensaje("Educación actualizada."), HttpStatus.CREATED);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/educacion/borrar/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         if(!educacionService.existeId(id))
@@ -86,6 +90,7 @@ public class EducacionController {
         return new ResponseEntity(new Mensaje("Educación borrada."), HttpStatus.OK);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{personaId}/educacion/borrar")
     public ResponseEntity<List<Educacion>> deleteAllEducacionOfPersona(@PathVariable(value = "personaId") Long personaId) {
         if (!personaRepository.existsById(personaId)){

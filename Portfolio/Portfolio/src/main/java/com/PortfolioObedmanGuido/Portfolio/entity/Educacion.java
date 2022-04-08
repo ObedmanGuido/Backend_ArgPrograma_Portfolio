@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
+/*import org.hibernate.validator.constraints.Length; Comentado por comentar dependencia org.hibernate.validator*/
 
 @Getter @Setter
 @Entity
@@ -25,11 +25,11 @@ public class Educacion {
     @Column(name="logo")
     private String logo;
     @NotEmpty
-    @Length(min=4, max = 4)
+    /*@Length(min=4, max = 4) Comentado por comentar dependencia org.hibernate.validator*/
     @Column(name="startyear")
     private int startyear;
     @NotEmpty
-    @Length(min=4, max = 4)
+    /*@Length(min=4, max = 4) Comentado por comentar dependencia org.hibernate.validator*/
     @Column(name="endyear")
     private int endyear;
     @NotEmpty

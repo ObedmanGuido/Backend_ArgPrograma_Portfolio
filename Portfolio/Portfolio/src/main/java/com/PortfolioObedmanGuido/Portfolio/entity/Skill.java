@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
+/*import org.hibernate.validator.constraints.Length; Comentado por comentar dependencia org.hibernate.validator*/
 
 @Getter @Setter
 @Entity
@@ -23,7 +23,7 @@ public class Skill {
     @Column(name="levelname")
     private String levelname;
     @NotEmpty
-    @Length(min=1, max = 3)
+    /*@Length(min=1, max = 3) Comentado por comentar dependencia org.hibernate.validator*/
     @Column(name="levelnumber")
     private int levelnumber;
     

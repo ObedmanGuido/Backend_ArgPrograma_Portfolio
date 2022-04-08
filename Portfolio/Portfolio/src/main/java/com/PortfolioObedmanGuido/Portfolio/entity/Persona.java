@@ -1,5 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.entity;
 
+import com.PortfolioObedmanGuido.Portfolio.security.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 import javax.persistence.*;
@@ -38,20 +39,21 @@ public class Persona {
     @NotEmpty
     @Column(name="aboutpersona")
     private String aboutpersona;
-    @NotEmpty
-    @Column(name="username", unique=true)
-    private String username;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Educacion> educacion;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Experiencia_Laboral> experiencia_laboral;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Skill> skill;
+    @OneToOne
+    @JoinTable(name = "persona_usuario", joinColumns = { @JoinColumn(name = "persona_id", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "usuario_id", referencedColumnName = "id") })
+    private Usuario usuario;
     
     public Persona() {
     }
 
-    public Persona(String fullname, String name, String surname, String profilepicture, String title, String position, String bannerpicture, String aboutpersona, String username) {
+    public Persona(String fullname, String name, String surname, String profilepicture, String title, String position, String bannerpicture, String aboutpersona) {
         this.fullname = fullname;
         this.name = name;
         this.surname = surname;
@@ -60,7 +62,6 @@ public class Persona {
         this.position = position;
         this.bannerpicture = bannerpicture;
         this.aboutpersona = aboutpersona;
-        this.username = username;
     }
     
 }

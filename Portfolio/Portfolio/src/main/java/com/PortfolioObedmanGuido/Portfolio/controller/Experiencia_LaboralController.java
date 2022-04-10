@@ -8,11 +8,13 @@ import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
 import com.PortfolioObedmanGuido.Portfolio.service.Experiencia_LaboralService;
 import com.PortfolioObedmanGuido.Portfolio.service.PersonaService;
 import java.util.List;
+import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -54,7 +56,9 @@ public class Experiencia_LaboralController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{personaId}/experiencia-laboral/nuevo")
     public ResponseEntity<Experiencia_Laboral> createExperiencia_Laboral(@PathVariable(value = "personaId") Long personaId,
-            @RequestBody Experiencia_Laboral experiencia_laboralRequest){
+            @Valid @RequestBody Experiencia_Laboral experiencia_laboralRequest, Errors errors){
+        if (errors.hasErrors())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Experiencia_Laboral experiencia_laboral = personaRepository.findById(personaId).map(persona -> {
             experiencia_laboralRequest.setPersona(persona);
             return experiencia_laboralRepository.save(experiencia_laboralRequest);
@@ -64,13 +68,15 @@ public class Experiencia_LaboralController {
     
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/experiencia-laboral/actualizar/{id}")
-    public ResponseEntity<?> update(@RequestBody Experiencia_Laboral experiencia_laboral, @PathVariable("id") Long id){
+    public ResponseEntity<?> update(@Valid @RequestBody Experiencia_Laboral experiencia_laboral, @PathVariable("id") Long id, Errors errors){
         if(!experiencia_laboralService.existeId(id))
             return new ResponseEntity(new Mensaje("La experiencia laboral no existe (id)."), HttpStatus.NOT_FOUND);
         if(StringUtils.isBlank(experiencia_laboral.getCompany()))
             return new ResponseEntity(new Mensaje("Tiene que poner la companía (company)."), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(experiencia_laboral.getPosition()))
             return new ResponseEntity(new Mensaje("Tiene que poner la posición (position)."), HttpStatus.BAD_REQUEST);
+        if (errors.hasErrors())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Experiencia_Laboral experiencia_laboralUpdate = experiencia_laboralService.buscarId(id).get();
         experiencia_laboralUpdate.setCompany(experiencia_laboral.getCompany());
         experiencia_laboralUpdate.setPosition(experiencia_laboral.getPosition());

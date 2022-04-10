@@ -8,11 +8,13 @@ import com.PortfolioObedmanGuido.Portfolio.repository.SkillRepository;
 import com.PortfolioObedmanGuido.Portfolio.service.PersonaService;
 import com.PortfolioObedmanGuido.Portfolio.service.SkillService;
 import java.util.List;
+import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -54,7 +56,9 @@ public class SkillController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{personaId}/skill/nuevo")
     public ResponseEntity<Skill> createSkill(@PathVariable(value = "personaId") Long personaId,
-            @RequestBody Skill skillRequest){
+            @Valid @RequestBody Skill skillRequest, Errors errors){
+        if (errors.hasErrors())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Skill skill = personaRepository.findById(personaId).map(persona -> {
             skillRequest.setPersona(persona);
             return skillRepository.save(skillRequest);
@@ -64,11 +68,13 @@ public class SkillController {
     
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/skill/actualizar/{id}")
-    public ResponseEntity<?> update(@RequestBody Skill skill, @PathVariable("id") Long id){
+    public ResponseEntity<?> update(@Valid @RequestBody Skill skill, @PathVariable("id") Long id, Errors errors){
         if(!skillService.existeId(id))
             return new ResponseEntity(new Mensaje("El skill no existe (id)."), HttpStatus.NOT_FOUND);
         if(StringUtils.isBlank(skill.getSkillname()))
             return new ResponseEntity(new Mensaje("Tiene que poner el nombre del skill (skillname)."), HttpStatus.BAD_REQUEST);
+        if (errors.hasErrors())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Skill skillUpdate = skillService.buscarId(id).get();
         skillUpdate.setSkillname(skill.getSkillname());
         skillUpdate.setLevelname(skill.getLevelname());

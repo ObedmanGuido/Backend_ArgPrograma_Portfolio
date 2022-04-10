@@ -8,14 +8,18 @@ import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
 import com.PortfolioObedmanGuido.Portfolio.service.EducacionService;
 import com.PortfolioObedmanGuido.Portfolio.service.PersonaService;
 import java.util.List;
+import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Validated
 @RequestMapping("/api/personas")
 @CrossOrigin(origins="*")
 public class EducacionController {
@@ -54,7 +58,9 @@ public class EducacionController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{personaId}/educacion/nuevo")
     public ResponseEntity<Educacion> createEducacion(@PathVariable(value = "personaId") Long personaId,
-            @RequestBody Educacion educacionRequest){
+            @Valid @RequestBody Educacion educacionRequest, Errors errors){
+        if (errors.hasErrors())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Educacion educacion = personaRepository.findById(personaId).map(persona -> {
             educacionRequest.setPersona(persona);
             return educacionRepository.save(educacionRequest);
@@ -64,11 +70,13 @@ public class EducacionController {
     
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/educacion/actualizar/{id}")
-    public ResponseEntity<?> update(@RequestBody Educacion educacion, @PathVariable("id") Long id){
+    public ResponseEntity<?> update(@Valid @RequestBody Educacion educacion, @PathVariable("id") Long id, Errors errors){
         if(!educacionService.existeId(id))
             return new ResponseEntity(new Mensaje("La educación no existe (id)."), HttpStatus.NOT_FOUND);
         if(StringUtils.isBlank(educacion.getTitle()))
             return new ResponseEntity(new Mensaje("Tiene que poner el título (title)."), HttpStatus.BAD_REQUEST);
+        if(errors.hasErrors())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Educacion educacionUpdate = educacionService.buscarId(id).get();
         educacionUpdate.setSchoolname(educacion.getSchoolname());
         educacionUpdate.setTitle(educacion.getTitle());

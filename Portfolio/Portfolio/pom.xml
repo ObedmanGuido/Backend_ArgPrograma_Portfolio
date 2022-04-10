@@ -61,15 +61,13 @@
                 <dependency>
                     <groupId>org.apache.commons</groupId>
                     <artifactId>commons-lang3</artifactId>
-                    <version>3.8.1</version>
                         <type>jar</type>
                 </dependency>
                 <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
-                <!--<dependency>
+                <dependency>
                     <groupId>org.hibernate.validator</groupId>
                     <artifactId>hibernate-validator</artifactId>
-                    <version>7.0.4.Final</version>
-                </dependency> comentado para dependency spring-boot-starter-validation.-->
+                </dependency>
                 <!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
                 <dependency>
                     <groupId>javax.el</groupId>

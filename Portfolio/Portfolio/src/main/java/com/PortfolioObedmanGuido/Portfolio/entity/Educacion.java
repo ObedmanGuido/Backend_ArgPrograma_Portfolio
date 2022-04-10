@@ -2,12 +2,16 @@ package com.PortfolioObedmanGuido.Portfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-/*import org.hibernate.validator.constraints.Length; Comentado por comentar dependencia org.hibernate.validator*/
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
 @Entity
@@ -17,26 +21,26 @@ public class Educacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @Column(name="schoolname")
+    @Column(name="schoolname", nullable = false)
     private String schoolname;
     @NotEmpty
-    @Column(name="title")
+    @Column(name="title", nullable = false)
     private String title;
     @Column(name="logo")
     private String logo;
-    @NotEmpty
-    /*@Length(min=4, max = 4) Comentado por comentar dependencia org.hibernate.validator*/
-    @Column(name="startyear")
+    @NotNull
+    @Range(min = 1900, max = 2050, message = "Año de inicio debe estar entre 1900 y 2050")
+    @Column(name="startyear", nullable = false)
     private int startyear;
-    @NotEmpty
-    /*@Length(min=4, max = 4) Comentado por comentar dependencia org.hibernate.validator*/
-    @Column(name="endyear")
+    @NotNull
+    @Range(min = 1900, max = 2050, message = "Año de fin debe estar entre 1900 y 2050")
+    @Column(name="endyear", nullable = false)
     private int endyear;
     @NotEmpty
-    @Column(name="typeofschool")
+    @Column(name="typeofschool", nullable = false)
     private String typeofschool;
     @NotEmpty
-    @Column(name="studiesstatus")
+    @Column(name="studiesstatus", nullable = false)
     private String studiesstatus;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)

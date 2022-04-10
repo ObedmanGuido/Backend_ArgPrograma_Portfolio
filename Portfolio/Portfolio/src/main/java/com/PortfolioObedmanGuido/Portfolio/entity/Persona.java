@@ -16,28 +16,26 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @Column(name="fullname")
+    @Column(name="fullname", nullable = false)
     private String fullname;
     @NotEmpty
-    @Column(name="name")
+    @Column(name="name", nullable = false)
     private String name;
     @NotEmpty
-    @Column(name="surname")
+    @Column(name="surname", nullable = false)
     private String surname;
-    @NotEmpty
     @Column(name="profilepicture")
     private String profilepicture;
     @NotEmpty
-    @Column(name="title")
+    @Column(name="title", nullable = false)
     private String title;
     @NotEmpty
-    @Column(name="position")
+    @Column(name="position", nullable = false)
     private String position;
-    @NotEmpty
     @Column(name="bannerpicture")
     private String bannerpicture;
     @NotEmpty
-    @Column(name="aboutpersona")
+    @Column(name="aboutpersona", nullable = false)
     private String aboutpersona;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Educacion> educacion;

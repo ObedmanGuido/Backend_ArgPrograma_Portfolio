@@ -1,20 +1,17 @@
 package com.PortfolioObedmanGuido.Portfolio.security.DTO;
 
-import java.util.Collection;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
 
 @Getter @Setter
 public class JwtDto {
     private String token;
-    private String bearer = "Bearer";
-    private String username;
-    private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtDto(String token, String username, Collection<? extends GrantedAuthority> authorities) {
-        this.token = token;
-        this.username = username;
-        this.authorities = authorities;
+    public JwtDto() {
     }
+    
+    public JwtDto(String token) {
+        this.token = token;
+    }
+    
 }

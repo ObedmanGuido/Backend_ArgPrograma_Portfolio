@@ -85,6 +85,7 @@ public class Experiencia_LaboralController {
         experiencia_laboralUpdate.setStartyear(experiencia_laboral.getStartyear());
         experiencia_laboralUpdate.setEndmonth(experiencia_laboral.getEndmonth());
         experiencia_laboralUpdate.setEndyear(experiencia_laboral.getEndyear());
+        experiencia_laboralUpdate.setWorkdescription(experiencia_laboral.getWorkdescription());
         experiencia_laboralService.crearExperiencia_Laboral(experiencia_laboralUpdate);
         return new ResponseEntity(new Mensaje("Experiencia laboral actualizada."), HttpStatus.CREATED);
     }

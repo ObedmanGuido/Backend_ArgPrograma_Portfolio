@@ -79,6 +79,8 @@ public class SkillController {
         skillUpdate.setSkillname(skill.getSkillname());
         skillUpdate.setLevelname(skill.getLevelname());
         skillUpdate.setLevelnumber(skill.getLevelnumber());
+        skillUpdate.setSkilltype(skill.getSkilltype());
+        skillUpdate.setSkilldescription(skill.getSkilldescription());
         skillService.crearSkill(skillUpdate);
         return new ResponseEntity(new Mensaje("Skill actualizado."), HttpStatus.CREATED);
     }

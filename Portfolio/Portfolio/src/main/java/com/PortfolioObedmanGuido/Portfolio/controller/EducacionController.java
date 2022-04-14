@@ -85,6 +85,7 @@ public class EducacionController {
         educacionUpdate.setEndyear(educacion.getEndyear());
         educacionUpdate.setTypeofschool(educacion.getTypeofschool());
         educacionUpdate.setStudiesstatus(educacion.getStudiesstatus());
+        educacionUpdate.setEducationdescription(educacion.getEducationdescription());
         educacionService.crearEducacion(educacionUpdate);
         return new ResponseEntity(new Mensaje("Educación actualizada."), HttpStatus.CREATED);
     }

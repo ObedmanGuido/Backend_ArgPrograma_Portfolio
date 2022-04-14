@@ -2,15 +2,12 @@ package com.PortfolioObedmanGuido.Portfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
@@ -42,6 +39,9 @@ public class Educacion {
     @NotEmpty
     @Column(name="studiesstatus", nullable = false)
     private String studiesstatus;
+    @NotEmpty
+    @Column(name="educationdescription", nullable = false, length = 1000)
+    private String educationdescription;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -51,7 +51,7 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(Long id, String schoolname, String title, String logo, int startyear, int endyear, String typeofschool, String studiesstatus) {
+    public Educacion(Long id, String schoolname, String title, String logo, int startyear, int endyear, String typeofschool, String studiesstatus, String educationdescription) {
         this.id = id;
         this.schoolname = schoolname;
         this.title = title;
@@ -60,6 +60,7 @@ public class Educacion {
         this.endyear = endyear;
         this.typeofschool = typeofschool;
         this.studiesstatus = studiesstatus;
+        this.educationdescription = educationdescription;
     }
     
 }

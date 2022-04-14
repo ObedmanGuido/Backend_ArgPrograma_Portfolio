@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
 @Entity
-@Table(name = "educacion")
+@Table(name = "proyecto")
 public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

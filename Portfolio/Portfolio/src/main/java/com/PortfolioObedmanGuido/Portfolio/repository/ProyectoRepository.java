@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProyectoRepository extends JpaRepository<Proyecto, Long>{
-    Optional<Proyecto> findByProjectName(String pn);
-    boolean existsByProjectName(String pn);
+    Optional<Proyecto> findByProjectname(String pn);
+    boolean existsByProjectname(String pn);
     List<Proyecto> findByPersonaId(Long pnId);
     
     @Transactional

@@ -27,7 +27,7 @@ public class ProyectoService implements IProyectoService{
 
     @Override
     public Optional<Proyecto> buscarProyectoNombre(String pn) {
-        return proyectoRepository.findByProjectName(pn);
+        return proyectoRepository.findByProjectname(pn);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ProyectoService implements IProyectoService{
 
     @Override
     public boolean existeProyectoNombre(String pn) {
-        return proyectoRepository.existsByProjectName(pn);
+        return proyectoRepository.existsByProjectname(pn);
     }
 
     @Override

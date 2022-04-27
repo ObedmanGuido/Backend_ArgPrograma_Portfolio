@@ -80,16 +80,13 @@ public class ProyectoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Proyecto proyectoUpdate = proyectoService.buscarId(id).get();
         proyectoUpdate.setProjectname(proyecto.getProjectname());
-        proyectoUpdate.setRealizationday(proyecto.getRealizationday());
-        proyectoUpdate.setRealizationmonth(proyecto.getRealizationmonth());
-        proyectoUpdate.setRealizationyear(proyecto.getRealizationyear());
+        proyectoUpdate.setCreationdate(proyecto.getCreationdate());
         proyectoUpdate.setProjectdescription(proyecto.getProjectdescription());
         proyectoUpdate.setProjectlink(proyecto.getProjectlink());
-        proyectoUpdate.setMedia1(proyecto.getMedia1());
-        proyectoUpdate.setMedia2(proyecto.getMedia2());
-        proyectoUpdate.setMedia3(proyecto.getMedia3());
-        proyectoUpdate.setMedia4(proyecto.getMedia4());
-        proyectoUpdate.setMedia5(proyecto.getMedia5());
+        proyectoUpdate.setImage1(proyecto.getImage1());
+        proyectoUpdate.setImage2(proyecto.getImage2());
+        proyectoUpdate.setImage3(proyecto.getImage3());
+        proyectoUpdate.setVideo(proyecto.getVideo());
         proyectoService.crearProyecto(proyectoUpdate);
         return new ResponseEntity(new Mensaje("Proyecto actualizado."), HttpStatus.CREATED);
     }

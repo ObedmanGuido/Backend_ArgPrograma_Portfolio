@@ -2,6 +2,7 @@ package com.PortfolioObedmanGuido.Portfolio.entity;
 
 import com.PortfolioObedmanGuido.Portfolio.security.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -42,16 +43,9 @@ public class Persona {
     @NotEmpty
     @Column(name="address", nullable = false)
     private String address;
-    @Range(min = 1, max = 31, message = "Día de nacimiento debe estar entre 1 y 31")
-    @Column(name="dayofbirth", nullable = false)
-    private int dayofbirth;
-    @NotEmpty
-    @Column(name="monthofbirth", nullable = false)
-    private String monthofbirth;
     @NotNull
-    @Range(min = 1900, max = 2050, message = "Año de nacimiento debe estar entre 1900 y 2050")
-    @Column(name="yearofbirth", nullable = false)
-    private int yearofbirth;
+    @Column(name="dateofbirth", nullable = false)
+    private LocalDate dateofbirth;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Educacion> educacion;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -69,7 +63,7 @@ public class Persona {
     }
 
     public Persona(String fullname, String name, String surname, String profilepicture, String title, String position,
-            String bannerpicture, String aboutpersona, String address, int dayofbirth, String monthofbirth, int yearofbirth) {
+            String bannerpicture, String aboutpersona, String address, LocalDate dateofbirth) {
         this.fullname = fullname;
         this.name = name;
         this.surname = surname;
@@ -79,9 +73,6 @@ public class Persona {
         this.bannerpicture = bannerpicture;
         this.aboutpersona = aboutpersona;
         this.address = address;
-        this.dayofbirth = dayofbirth;
-        this.monthofbirth = monthofbirth;
-        this.yearofbirth = yearofbirth;
+        this.dateofbirth = dateofbirth;
     }
-    
 }

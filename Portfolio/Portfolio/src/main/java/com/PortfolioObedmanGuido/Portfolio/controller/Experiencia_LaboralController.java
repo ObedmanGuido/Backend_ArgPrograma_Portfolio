@@ -81,11 +81,10 @@ public class Experiencia_LaboralController {
         experiencia_laboralUpdate.setCompany(experiencia_laboral.getCompany());
         experiencia_laboralUpdate.setPosition(experiencia_laboral.getPosition());
         experiencia_laboralUpdate.setLogo(experiencia_laboral.getLogo());
-        experiencia_laboralUpdate.setStartmonth(experiencia_laboral.getStartmonth());
-        experiencia_laboralUpdate.setStartyear(experiencia_laboral.getStartyear());
-        experiencia_laboralUpdate.setEndmonth(experiencia_laboral.getEndmonth());
-        experiencia_laboralUpdate.setEndyear(experiencia_laboral.getEndyear());
+        experiencia_laboralUpdate.setStartdate(experiencia_laboral.getStartdate());
+        experiencia_laboralUpdate.setEnddate(experiencia_laboral.getEnddate());
         experiencia_laboralUpdate.setWorkdescription(experiencia_laboral.getWorkdescription());
+        experiencia_laboralUpdate.setCurrentjob(experiencia_laboral.getCurrentjob());
         experiencia_laboralService.crearExperiencia_Laboral(experiencia_laboralUpdate);
         return new ResponseEntity(new Mensaje("Experiencia laboral actualizada."), HttpStatus.CREATED);
     }

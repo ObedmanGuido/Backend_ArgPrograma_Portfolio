@@ -60,9 +60,7 @@ public class PersonaController {
         personaUpdate.setBannerpicture(persona.getBannerpicture());
         personaUpdate.setAboutpersona(persona.getAboutpersona());
         personaUpdate.setAddress(persona.getAddress());
-        personaUpdate.setDayofbirth(persona.getDayofbirth());
-        personaUpdate.setMonthofbirth(persona.getMonthofbirth());
-        personaUpdate.setYearofbirth(persona.getYearofbirth());
+        personaUpdate.setDateofbirth(persona.getDateofbirth());
         personaService.crearPersona(personaUpdate);
         return new ResponseEntity(new Mensaje("Persona actualizada."), HttpStatus.CREATED);
     }

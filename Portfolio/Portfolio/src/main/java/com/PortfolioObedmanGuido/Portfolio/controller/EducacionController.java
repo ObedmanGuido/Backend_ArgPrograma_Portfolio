@@ -81,8 +81,8 @@ public class EducacionController {
         educacionUpdate.setSchoolname(educacion.getSchoolname());
         educacionUpdate.setTitle(educacion.getTitle());
         educacionUpdate.setLogo(educacion.getLogo());
-        educacionUpdate.setStartyear(educacion.getStartyear());
-        educacionUpdate.setEndyear(educacion.getEndyear());
+        educacionUpdate.setStartdate(educacion.getStartdate());
+        educacionUpdate.setEnddate(educacion.getEnddate());
         educacionUpdate.setTypeofschool(educacion.getTypeofschool());
         educacionUpdate.setStudiesstatus(educacion.getStudiesstatus());
         educacionUpdate.setEducationdescription(educacion.getEducationdescription());

@@ -1,6 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -25,23 +26,17 @@ public class Experiencia_Laboral {
     private String position;
     @Column(name="logo")
     private String logo;
-    @NotEmpty
-    @Column(name="startmonth", nullable = false)
-    private String startmonth;
     @NotNull
-    @Range(min = 1900, max = 2050, message = "Año de inicio debe estar entre 1900 y 2050")
-    @Column(name="startyear", nullable = false)
-    private int startyear;
-    @NotEmpty
-    @Column(name="endmonth", nullable = false)
-    private String endmonth;
+    @Column(name="startdate", nullable = false)
+    private LocalDate startdate;
     @NotNull
-    @Range(min = 1900, max = 2050, message = "Año de fin debe estar entre 1900 y 2050")
-    @Column(name="endyear", nullable = false)
-    private int endyear;
+    @Column(name="enddate", nullable = false)
+    private LocalDate enddate;
     @NotEmpty
     @Column(name="workdescription", nullable = false, length = 1000)
     private String workdescription;
+    @Column(name="currentjob")
+    private Boolean currentjob;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -52,15 +47,14 @@ public class Experiencia_Laboral {
     public Experiencia_Laboral() {
     }
 
-    public Experiencia_Laboral(Long id, String company, String position, String logo, String startmonth, int startyear, String endmonth, int endyear, String workdescription) {
+    public Experiencia_Laboral(Long id, String company, String position, String logo, LocalDate startdate, LocalDate enddate, String workdescription, Boolean currentjob) {
         this.id = id;
         this.company = company;
         this.position = position;
         this.logo = logo;
-        this.startmonth = startmonth;
-        this.startyear = startyear;
-        this.endmonth = endmonth;
-        this.endyear = endyear;
+        this.startdate = startdate;
+        this.enddate = enddate;
+        this.currentjob = currentjob;
         this.workdescription = workdescription;
     }
 }

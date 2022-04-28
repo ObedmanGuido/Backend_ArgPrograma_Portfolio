@@ -1,6 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -26,13 +27,11 @@ public class Educacion {
     @Column(name="logo")
     private String logo;
     @NotNull
-    @Range(min = 1900, max = 2050, message = "Año de inicio debe estar entre 1900 y 2050")
-    @Column(name="startyear", nullable = false)
-    private int startyear;
+    @Column(name="startdate", nullable = false)
+    private LocalDate startdate;
     @NotNull
-    @Range(min = 1900, max = 2050, message = "Año de fin debe estar entre 1900 y 2050")
-    @Column(name="endyear", nullable = false)
-    private int endyear;
+    @Column(name="enddate", nullable = false)
+    private LocalDate enddate;
     @NotEmpty
     @Column(name="typeofschool", nullable = false)
     private String typeofschool;
@@ -51,13 +50,13 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(Long id, String schoolname, String title, String logo, int startyear, int endyear, String typeofschool, String studiesstatus, String educationdescription) {
+    public Educacion(Long id, String schoolname, String title, String logo, LocalDate startdate, LocalDate enddate, String typeofschool, String studiesstatus, String educationdescription) {
         this.id = id;
         this.schoolname = schoolname;
         this.title = title;
         this.logo = logo;
-        this.startyear = startyear;
-        this.endyear = endyear;
+        this.startdate = startdate;
+        this.enddate = enddate;
         this.typeofschool = typeofschool;
         this.studiesstatus = studiesstatus;
         this.educationdescription = educationdescription;

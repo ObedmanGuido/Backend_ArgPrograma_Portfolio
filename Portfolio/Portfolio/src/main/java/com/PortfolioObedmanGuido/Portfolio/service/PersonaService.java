@@ -27,8 +27,8 @@ public class PersonaService implements IPersonaService {
     }
 
     @Override
-    public Optional<Persona> buscarNombreCompleto(String fn) {
-        return personaRepository.findByFullname(fn);
+    public Optional<Persona> buscarEmail(String em) {
+        return personaRepository.findByEmail(em);
     }
 
     @Override
@@ -42,13 +42,12 @@ public class PersonaService implements IPersonaService {
     }
 
     @Override
-    public boolean existeNombreCompleto(String fn) {
-        return personaRepository.existsByFullname(fn);
+    public boolean existeEmail(String em) {
+        return personaRepository.existsByEmail(em);
     }
 
     @Override
     public boolean existeId(Long id) {
         return personaRepository.existsById(id);
     }
-
 }

@@ -19,9 +19,6 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @Column(name="fullname", nullable = false)
-    private String fullname;
-    @NotEmpty
     @Column(name="name", nullable = false)
     private String name;
     @NotEmpty
@@ -46,6 +43,12 @@ public class Persona {
     @NotNull
     @Column(name="dateofbirth", nullable = false)
     private LocalDate dateofbirth;
+    @NotNull
+    @Column(name="telephone", nullable = false)
+    private String telephone;
+    @NotNull
+    @Column(name="email", nullable = false)
+    private String email;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Educacion> educacion;
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -62,9 +65,8 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String fullname, String name, String surname, String profilepicture, String title, String position,
-            String bannerpicture, String aboutpersona, String address, LocalDate dateofbirth) {
-        this.fullname = fullname;
+    public Persona(String name, String surname, String profilepicture, String title, String position,
+            String bannerpicture, String aboutpersona, String address, LocalDate dateofbirth, String telephone, String email) {
         this.name = name;
         this.surname = surname;
         this.profilepicture = profilepicture;
@@ -74,5 +76,7 @@ public class Persona {
         this.aboutpersona = aboutpersona;
         this.address = address;
         this.dateofbirth = dateofbirth;
+        this.telephone = telephone;
+        this.email = email;
     }
 }

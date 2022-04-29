@@ -35,10 +35,10 @@ public class PersonaController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/nuevo")
     public ResponseEntity<?> create(@RequestBody Persona persona){
-        if(StringUtils.isBlank(persona.getFullname()))
-            return new ResponseEntity(new Mensaje("Tiene que poner el nombre completo (fullname)."), HttpStatus.BAD_REQUEST);
-        if(personaService.existeNombreCompleto(persona.getFullname()))
-            return new ResponseEntity(new Mensaje("Esa persona (fullname) ya existe."), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(persona.getEmail()))
+            return new ResponseEntity(new Mensaje("Tiene que poner el email."), HttpStatus.BAD_REQUEST);
+        if(personaService.existeEmail(persona.getEmail()))
+            return new ResponseEntity(new Mensaje("Esa persona (email) ya existe."), HttpStatus.BAD_REQUEST);
         personaService.crearPersona(persona);
         return new ResponseEntity(new Mensaje("Persona creada."), HttpStatus.CREATED);
     }
@@ -48,10 +48,9 @@ public class PersonaController {
     public ResponseEntity<?> update(@RequestBody Persona persona, @PathVariable("id") Long id){
         if(!personaService.existeId(id))
             return new ResponseEntity(new Mensaje("La persona no existe (id)."), HttpStatus.NOT_FOUND);
-        if(StringUtils.isBlank(persona.getFullname()))
-            return new ResponseEntity(new Mensaje("Tiene que poner el nombre completo (fullname)."), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(persona.getEmail()))
+            return new ResponseEntity(new Mensaje("Tiene que poner el email."), HttpStatus.BAD_REQUEST);
         Persona personaUpdate = personaService.buscarId(id).get();
-        personaUpdate.setFullname(persona.getFullname());
         personaUpdate.setName(persona.getName());
         personaUpdate.setSurname(persona.getSurname());
         personaUpdate.setProfilepicture(persona.getProfilepicture());
@@ -61,6 +60,8 @@ public class PersonaController {
         personaUpdate.setAboutpersona(persona.getAboutpersona());
         personaUpdate.setAddress(persona.getAddress());
         personaUpdate.setDateofbirth(persona.getDateofbirth());
+        personaUpdate.setTelephone(persona.getTelephone());
+        personaUpdate.setEmail(persona.getEmail());
         personaService.crearPersona(personaUpdate);
         return new ResponseEntity(new Mensaje("Persona actualizada."), HttpStatus.CREATED);
     }

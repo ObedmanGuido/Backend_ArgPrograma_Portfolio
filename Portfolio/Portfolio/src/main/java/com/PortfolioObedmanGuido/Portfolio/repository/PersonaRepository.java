@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, Long>{
-    Optional<Persona> findByFullname(String fn);
-    boolean existsByFullname(String fn);
+    Optional<Persona> findByEmail(String em);
+    boolean existsByEmail(String em);
 }

@@ -41,6 +41,8 @@ public class Educacion {
     @NotEmpty
     @Column(name="educationdescription", nullable = false, length = 1000)
     private String educationdescription;
+    @Column(name="currenteducation")
+    private Boolean currenteducation;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -50,7 +52,8 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(Long id, String schoolname, String title, String logo, LocalDate startdate, LocalDate enddate, String typeofschool, String studiesstatus, String educationdescription) {
+    public Educacion(Long id, String schoolname, String title, String logo, LocalDate startdate, LocalDate enddate, String typeofschool,
+            String studiesstatus, String educationdescription, Boolean currenteducation) {
         this.id = id;
         this.schoolname = schoolname;
         this.title = title;
@@ -60,6 +63,7 @@ public class Educacion {
         this.typeofschool = typeofschool;
         this.studiesstatus = studiesstatus;
         this.educationdescription = educationdescription;
+        this.currenteducation = currenteducation;
     }
     
 }

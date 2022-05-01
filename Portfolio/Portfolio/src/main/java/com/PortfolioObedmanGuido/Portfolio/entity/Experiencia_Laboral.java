@@ -54,7 +54,7 @@ public class Experiencia_Laboral {
         this.logo = logo;
         this.startdate = startdate;
         this.enddate = enddate;
-        this.currentjob = currentjob;
         this.workdescription = workdescription;
+        this.currentjob = currentjob;
     }
 }

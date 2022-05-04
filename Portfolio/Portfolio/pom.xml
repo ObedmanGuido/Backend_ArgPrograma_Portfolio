@@ -14,7 +14,7 @@
 	<name>Portfolio</name>
 	<description>Back end para portfolio</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>  <!--Agregado para que ande Heroku-->
 	</properties>
 	<dependencies>
 		<dependency>

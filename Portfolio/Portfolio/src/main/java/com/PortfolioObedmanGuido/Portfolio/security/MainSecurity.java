@@ -40,7 +40,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .authorizeRequests()
+                .authorizeRequests().antMatchers("/").anonymous()/*Para que index.html se pueda ver.*/
                 .antMatchers("/api/**")/*Todo lo que este en URL /api/** podrían acceder todos.*/
                 .permitAll().anyRequest()
                 .authenticated()

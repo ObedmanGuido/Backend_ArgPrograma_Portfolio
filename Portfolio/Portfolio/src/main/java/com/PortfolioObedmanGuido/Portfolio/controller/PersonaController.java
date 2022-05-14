@@ -58,10 +58,10 @@ public class PersonaController {
         personaUpdate.setPosition(persona.getPosition());
         personaUpdate.setBannerpicture(persona.getBannerpicture());
         personaUpdate.setAboutpersona(persona.getAboutpersona());
-        personaUpdate.setAddress(persona.getAddress());
         personaUpdate.setDateofbirth(persona.getDateofbirth());
         personaUpdate.setTelephone(persona.getTelephone());
         personaUpdate.setEmail(persona.getEmail());
+        personaUpdate.setProvincia(persona.getProvincia());
         personaService.crearPersona(personaUpdate);
         return new ResponseEntity(new Mensaje("Persona actualizada."), HttpStatus.CREATED);
     }

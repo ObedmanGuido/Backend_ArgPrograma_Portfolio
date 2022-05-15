@@ -20,18 +20,16 @@ public class Skill {
     @NotEmpty
     @Column(name="skillname", nullable = false)
     private String skillname;
-    @NotEmpty
-    @Column(name="levelname", nullable = false)
-    private String levelname;
     @NotNull
     @Range(min = 0, max = 100, message = "Nivel debe estar entre 0 y 100")
     @Column(name="levelnumber", nullable = false)
     private int levelnumber;
-    @NotEmpty
-    @Column(name="skilltype", nullable = false)
-    private String skilltype;
     @Column(name="skilldescription", length = 1000)
     private String skilldescription;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "skill_tipo_id", nullable = false)
+    private Skill_Tipo skill_tipo;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
@@ -42,12 +40,11 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(Long id, String skillname, String levelname, int levelnumber, String skilltype, String skilldescription) {
+    public Skill(Long id, String skillname, int levelnumber, String skilldescription, Skill_Tipo skill_tipo) {
         this.id = id;
         this.skillname = skillname;
-        this.levelname = levelname;
         this.levelnumber = levelnumber;
-        this.skilltype = skilltype;
         this.skilldescription = skilldescription;
+        this.skill_tipo = skill_tipo;
     }
 }

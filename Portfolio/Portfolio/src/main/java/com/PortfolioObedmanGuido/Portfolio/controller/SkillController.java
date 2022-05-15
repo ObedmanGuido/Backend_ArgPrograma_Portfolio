@@ -15,9 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Validated
 @RequestMapping("/api/personas")
 @CrossOrigin(origins="http://localhost:4200")
 public class SkillController {
@@ -77,10 +79,9 @@ public class SkillController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Skill skillUpdate = skillService.buscarId(id).get();
         skillUpdate.setSkillname(skill.getSkillname());
-        skillUpdate.setLevelname(skill.getLevelname());
         skillUpdate.setLevelnumber(skill.getLevelnumber());
-        skillUpdate.setSkilltype(skill.getSkilltype());
         skillUpdate.setSkilldescription(skill.getSkilldescription());
+        skillUpdate.setSkill_tipo(skill.getSkill_tipo());
         skillService.crearSkill(skillUpdate);
         return new ResponseEntity(new Mensaje("Skill actualizado."), HttpStatus.CREATED);
     }

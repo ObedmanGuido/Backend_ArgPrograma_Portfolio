@@ -1,9 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Persona;
 import com.PortfolioObedmanGuido.Portfolio.entity.Provincia;
-import com.PortfolioObedmanGuido.Portfolio.exception.ResourceNotFoundException;
 import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.ProvinciaRepository;
 import com.PortfolioObedmanGuido.Portfolio.service.PersonaService;
@@ -64,7 +62,7 @@ public class ProvinciaController {
         if(StringUtils.isBlank(provincia.getProvincename()))
             return new ResponseEntity(new Mensaje("Tiene que poner el nombre."), HttpStatus.BAD_REQUEST);
         if(provinciaService.existeProvinciaNombre(provincia.getProvincename()))
-            return new ResponseEntity(new Mensaje("Esa provincia (nombre) ya existe."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa provincia ya existe."), HttpStatus.BAD_REQUEST);
         provinciaService.crearProvincia(provincia);
         return new ResponseEntity(new Mensaje("Provincia creada."), HttpStatus.CREATED);
     }

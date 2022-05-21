@@ -1,6 +1,6 @@
-/*package com.PortfolioObedmanGuido.Portfolio.util;*/
+/*package com.PortfolioObedmanGuido.Portfolio.util;
 
-/*import com.PortfolioObedmanGuido.Portfolio.entity.Provincia;
+import com.PortfolioObedmanGuido.Portfolio.model.Provincia;
 import com.PortfolioObedmanGuido.Portfolio.service.ProvinciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

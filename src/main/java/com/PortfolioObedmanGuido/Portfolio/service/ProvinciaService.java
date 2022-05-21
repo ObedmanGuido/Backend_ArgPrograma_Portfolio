@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Provincia;
+import com.PortfolioObedmanGuido.Portfolio.model.Provincia;
 import com.PortfolioObedmanGuido.Portfolio.repository.ProvinciaRepository;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +27,7 @@ public class ProvinciaService implements IProvinciaService{
 
     @Override
     public Optional<Provincia> buscarProvinciaNombre(String pn) {
-        return provinciaRepository.findByProvincename(pn);
+        return provinciaRepository.findByProvinceName(pn);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ProvinciaService implements IProvinciaService{
 
     @Override
     public boolean existeProvinciaNombre(String pn) {
-        return provinciaRepository.existsByProvincename(pn);
+        return provinciaRepository.existsByProvinceName(pn);
     }
 
     @Override

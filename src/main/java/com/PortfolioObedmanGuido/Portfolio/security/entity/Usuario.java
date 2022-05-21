@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.security.entity;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Persona;
+import com.PortfolioObedmanGuido.Portfolio.model.Persona;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;

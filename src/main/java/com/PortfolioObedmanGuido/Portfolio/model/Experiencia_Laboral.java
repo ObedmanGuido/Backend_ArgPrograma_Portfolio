@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
 @Entity
@@ -28,15 +27,15 @@ public class Experiencia_Laboral {
     private String logo;
     @NotNull
     @Column(name="startdate", nullable = false)
-    private LocalDate startdate;
+    private LocalDate startDate;
     @NotNull
     @Column(name="enddate", nullable = false)
-    private LocalDate enddate;
+    private LocalDate endDate;
     @NotEmpty
     @Column(name="workdescription", nullable = false, length = 1000)
-    private String workdescription;
+    private String workDescription;
     @Column(name="currentjob")
-    private Boolean currentjob;
+    private Boolean currentJob;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -47,14 +46,14 @@ public class Experiencia_Laboral {
     public Experiencia_Laboral() {
     }
 
-    public Experiencia_Laboral(Long id, String company, String position, String logo, LocalDate startdate, LocalDate enddate, String workdescription, Boolean currentjob) {
+    public Experiencia_Laboral(Long id, String company, String position, String logo, LocalDate startDate, LocalDate endDate, String workDescription, Boolean currentJob) {
         this.id = id;
         this.company = company;
         this.position = position;
         this.logo = logo;
-        this.startdate = startdate;
-        this.enddate = enddate;
-        this.workdescription = workdescription;
-        this.currentjob = currentjob;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.workDescription = workDescription;
+        this.currentJob = currentJob;
     }
 }

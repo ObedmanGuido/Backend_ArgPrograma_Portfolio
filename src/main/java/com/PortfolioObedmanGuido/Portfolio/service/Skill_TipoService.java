@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Skill_Tipo;
+import com.PortfolioObedmanGuido.Portfolio.model.Skill_Tipo;
 import com.PortfolioObedmanGuido.Portfolio.repository.Skill_TipoRepository;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +27,7 @@ public class Skill_TipoService implements ISkill_TipoService{
 
     @Override
     public Optional<Skill_Tipo> buscarTipoNombre(String tn) {
-        return skill_TipoRepository.findByTypename(tn);
+        return skill_TipoRepository.findByTypeName(tn);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Skill_TipoService implements ISkill_TipoService{
 
     @Override
     public boolean existeTipoNombre(String tn) {
-        return skill_TipoRepository.existsByTypename(tn);
+        return skill_TipoRepository.existsByTypeName(tn);
     }
 
     @Override

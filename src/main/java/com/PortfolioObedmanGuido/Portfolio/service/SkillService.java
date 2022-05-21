@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Skill;
+import com.PortfolioObedmanGuido.Portfolio.model.Skill;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class SkillService implements ISkillService{
 
     @Override
     public Optional<Skill> buscarSkill(String sk) {
-        return skillRepository.findBySkillname(sk);
+        return skillRepository.findBySkillName(sk);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class SkillService implements ISkillService{
 
     @Override
     public boolean existeSkill(String sk) {
-        return skillRepository.existsBySkillname(sk);
+        return skillRepository.existsBySkillName(sk);
     }
 
     @Override

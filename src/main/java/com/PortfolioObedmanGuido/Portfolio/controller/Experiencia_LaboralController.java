@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Experiencia_Laboral;
+import com.PortfolioObedmanGuido.Portfolio.model.Experiencia_Laboral;
 import com.PortfolioObedmanGuido.Portfolio.exception.ResourceNotFoundException;
 import com.PortfolioObedmanGuido.Portfolio.repository.Experiencia_LaboralRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
@@ -81,10 +81,10 @@ public class Experiencia_LaboralController {
         experiencia_laboralUpdate.setCompany(experiencia_laboral.getCompany());
         experiencia_laboralUpdate.setPosition(experiencia_laboral.getPosition());
         experiencia_laboralUpdate.setLogo(experiencia_laboral.getLogo());
-        experiencia_laboralUpdate.setStartdate(experiencia_laboral.getStartdate());
-        experiencia_laboralUpdate.setEnddate(experiencia_laboral.getEnddate());
-        experiencia_laboralUpdate.setWorkdescription(experiencia_laboral.getWorkdescription());
-        experiencia_laboralUpdate.setCurrentjob(experiencia_laboral.getCurrentjob());
+        experiencia_laboralUpdate.setStartDate(experiencia_laboral.getStartDate());
+        experiencia_laboralUpdate.setEndDate(experiencia_laboral.getEndDate());
+        experiencia_laboralUpdate.setWorkDescription(experiencia_laboral.getWorkDescription());
+        experiencia_laboralUpdate.setCurrentJob(experiencia_laboral.getCurrentJob());
         experiencia_laboralService.crearExperiencia_Laboral(experiencia_laboralUpdate);
         return new ResponseEntity(new Mensaje("Experiencia laboral actualizada."), HttpStatus.CREATED);
     }

@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,7 +20,7 @@ public class Provincia {
     private Long id;
     @NotEmpty
     @Column(name="provincename", nullable = false)
-    private String provincename;
+    private String provinceName;
     //@OneToMany(mappedBy = "provincia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //@JsonBackReference //No mostrar las personas en provincia.
     //private List<Persona> persona;
@@ -28,8 +28,8 @@ public class Provincia {
     public Provincia() {
     }
     
-    public Provincia(Long id, String provincename) {
+    public Provincia(Long id, String provinceName) {
         this.id = id;
-        this.provincename = provincename;
+        this.provinceName = provinceName;
     }
 }

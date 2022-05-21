@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
@@ -19,13 +19,13 @@ public class Skill {
     private Long id;
     @NotEmpty
     @Column(name="skillname", nullable = false)
-    private String skillname;
+    private String skillName;
     @NotNull
     @Range(min = 0, max = 100, message = "Nivel debe estar entre 0 y 100")
     @Column(name="levelnumber", nullable = false)
-    private int levelnumber;
+    private int levelNumber;
     @Column(name="skilldescription", length = 1000)
-    private String skilldescription;
+    private String skillDescription;
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "skill_tipo_id", nullable = false)
@@ -40,11 +40,11 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(Long id, String skillname, int levelnumber, String skilldescription, Skill_Tipo skill_tipo) {
+    public Skill(Long id, String skillName, int levelNumber, String skillDescription, Skill_Tipo skill_tipo) {
         this.id = id;
-        this.skillname = skillname;
-        this.levelnumber = levelnumber;
-        this.skilldescription = skilldescription;
+        this.skillName = skillName;
+        this.levelNumber = levelNumber;
+        this.skillDescription = skillDescription;
         this.skill_tipo = skill_tipo;
     }
 }

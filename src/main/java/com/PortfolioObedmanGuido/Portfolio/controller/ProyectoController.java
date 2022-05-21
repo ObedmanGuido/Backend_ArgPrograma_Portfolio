@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Proyecto;
+import com.PortfolioObedmanGuido.Portfolio.model.Proyecto;
 import com.PortfolioObedmanGuido.Portfolio.exception.ResourceNotFoundException;
 import com.PortfolioObedmanGuido.Portfolio.repository.ProyectoRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
@@ -74,15 +74,15 @@ public class ProyectoController {
     public ResponseEntity<?> update(@Valid @RequestBody Proyecto proyecto, @PathVariable("id") Long id, Errors errors){
         if(!proyectoService.existeId(id))
             return new ResponseEntity(new Mensaje("El proyecto no existe (id)."), HttpStatus.NOT_FOUND);
-        if(StringUtils.isBlank(proyecto.getProjectname()))
-            return new ResponseEntity(new Mensaje("Tiene que poner el nombre (projectname)."), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(proyecto.getProjectName()))
+            return new ResponseEntity(new Mensaje("Tiene que poner el nombre (projectName)."), HttpStatus.BAD_REQUEST);
         if(errors.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Proyecto proyectoUpdate = proyectoService.buscarId(id).get();
-        proyectoUpdate.setProjectname(proyecto.getProjectname());
-        proyectoUpdate.setCreationdate(proyecto.getCreationdate());
-        proyectoUpdate.setProjectdescription(proyecto.getProjectdescription());
-        proyectoUpdate.setProjectlink(proyecto.getProjectlink());
+        proyectoUpdate.setProjectName(proyecto.getProjectName());
+        proyectoUpdate.setCreationDate(proyecto.getCreationDate());
+        proyectoUpdate.setProjectDescription(proyecto.getProjectDescription());
+        proyectoUpdate.setProjectLink(proyecto.getProjectLink());
         proyectoUpdate.setImage1(proyecto.getImage1());
         proyectoUpdate.setImage2(proyecto.getImage2());
         proyectoUpdate.setImage3(proyecto.getImage3());

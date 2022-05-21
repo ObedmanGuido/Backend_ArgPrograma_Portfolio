@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Provincia;
+import com.PortfolioObedmanGuido.Portfolio.model.Provincia;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.PortfolioObedmanGuido.Portfolio.security.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
 @Entity
@@ -29,7 +28,7 @@ public class Persona {
     @Column(name="surname", nullable = false)
     private String surname;
     @Column(name="profilepicture")
-    private String profilepicture;
+    private String profilePicture;
     @NotEmpty
     @Column(name="title", nullable = false)
     private String title;
@@ -37,13 +36,13 @@ public class Persona {
     @Column(name="position", nullable = false)
     private String position;
     @Column(name="bannerpicture")
-    private String bannerpicture;
+    private String bannerPicture;
     @NotEmpty
     @Column(name="aboutpersona", nullable = false, length = 1000)
-    private String aboutpersona;
+    private String aboutPersona;
     @NotNull
     @Column(name="dateofbirth", nullable = false)
-    private LocalDate dateofbirth;
+    private LocalDate dateOfBirth;
     @NotNull
     @Column(name="telephone", nullable = false)
     private String telephone;
@@ -71,16 +70,16 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String name, String surname, String profilepicture, String title, String position,
-            String bannerpicture, String aboutpersona, LocalDate dateofbirth, String telephone, String email, Provincia provincia) {
+    public Persona(String name, String surname, String profilePicture, String title, String position,
+            String bannerPicture, String aboutPersona, LocalDate dateOfBirth, String telephone, String email, Provincia provincia) {
         this.name = name;
         this.surname = surname;
-        this.profilepicture = profilepicture;
+        this.profilePicture = profilePicture;
         this.title = title;
         this.position = position;
-        this.bannerpicture = bannerpicture;
-        this.aboutpersona = aboutpersona;
-        this.dateofbirth = dateofbirth;
+        this.bannerPicture = bannerPicture;
+        this.aboutPersona = aboutPersona;
+        this.dateOfBirth = dateOfBirth;
         this.telephone = telephone;
         this.email = email;
         this.provincia = provincia;

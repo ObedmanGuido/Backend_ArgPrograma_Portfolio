@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.List;
@@ -16,7 +16,7 @@ public class Skill_Tipo {
     private Long id;
     @NotEmpty
     @Column(name="typename", nullable = false)
-    private String typename;
+    private String typeName;
     @OneToMany(mappedBy = "skill_tipo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference //No mostrar las personas en provincia.
     private List<Skill> skill;
@@ -24,8 +24,8 @@ public class Skill_Tipo {
     public Skill_Tipo() {
     }
 
-    public Skill_Tipo(Long id, String typename) {
+    public Skill_Tipo(Long id, String typeName) {
         this.id = id;
-        this.typename = typename;
+        this.typeName = typeName;
     }
 }

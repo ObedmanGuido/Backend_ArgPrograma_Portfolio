@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.repository;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Persona;
+import com.PortfolioObedmanGuido.Portfolio.model.Persona;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

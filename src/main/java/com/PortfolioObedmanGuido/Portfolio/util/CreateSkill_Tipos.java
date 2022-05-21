@@ -1,6 +1,6 @@
-/*package com.PortfolioObedmanGuido.Portfolio.util;*/
+/*package com.PortfolioObedmanGuido.Portfolio.util;
 
-/*import com.PortfolioObedmanGuido.Portfolio.entity.Skill_Tipo;
+import com.PortfolioObedmanGuido.Portfolio.model.Skill_Tipo;
 import com.PortfolioObedmanGuido.Portfolio.service.Skill_TipoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,4 +24,4 @@ public class CreateSkill_Tipos implements CommandLineRunner{
         Skill_Tipo Otros = new Skill_Tipo(null, "Otros");
         skill_TipoService.crearSkill_Tipo(Otros);
     }
-} /*Crear tipos de skills solo se usaría al crear BBDD.*/
+} Crear tipos de skills solo se usaría al crear BBDD.*/

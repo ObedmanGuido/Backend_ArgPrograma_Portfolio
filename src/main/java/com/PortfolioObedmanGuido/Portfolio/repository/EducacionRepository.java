@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.repository;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Educacion;
+import com.PortfolioObedmanGuido.Portfolio.model.Educacion;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;

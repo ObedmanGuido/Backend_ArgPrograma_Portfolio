@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
 @Entity
@@ -20,16 +19,16 @@ public class Proyecto {
     private Long id;
     @NotEmpty
     @Column(name="projectname", nullable = false)
-    private String projectname;
+    private String projectName;
     @NotNull
     @Column(name="creationdate", nullable = false)
-    private LocalDate creationdate;
+    private LocalDate creationDate;
     @NotEmpty
     @Column(name="projectdescription", nullable = false, length = 1000)
-    private String projectdescription;
+    private String projectDescription;
     @NotEmpty
     @Column(name="projectlink", nullable = false)
-    private String projectlink;
+    private String projectLink;
     @Column(name="image1")
     private String image1;
     @Column(name="image2")
@@ -47,12 +46,12 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(Long id, String projectname, LocalDate creationdate, String projectdescription, String projectlink, String image1, String image2, String image3, String video) {
+    public Proyecto(Long id, String projectName, LocalDate creationDate, String projectDescription, String projectLink, String image1, String image2, String image3, String video) {
         this.id = id;
-        this.projectname = projectname;
-        this.creationdate = creationdate;
-        this.projectdescription = projectdescription;
-        this.projectlink = projectlink;
+        this.projectName = projectName;
+        this.creationDate = creationDate;
+        this.projectDescription = projectDescription;
+        this.projectLink = projectLink;
         this.image1 = image1;
         this.image2 = image2;
         this.image3 = image3;

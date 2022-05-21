@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.repository;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Skill;
+import com.PortfolioObedmanGuido.Portfolio.model.Skill;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, Long>{
-    Optional<Skill> findBySkillname(String sk);
-    boolean existsBySkillname(String sk);
+    Optional<Skill> findBySkillName(String sk);
+    boolean existsBySkillName(String sk);
     List<Skill> findByPersonaId(Long skiId);
     
     @Transactional

@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Persona;
+import com.PortfolioObedmanGuido.Portfolio.model.Persona;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

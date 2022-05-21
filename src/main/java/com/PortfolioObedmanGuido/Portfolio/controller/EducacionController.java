@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Educacion;
+import com.PortfolioObedmanGuido.Portfolio.model.Educacion;
 import com.PortfolioObedmanGuido.Portfolio.exception.ResourceNotFoundException;
 import com.PortfolioObedmanGuido.Portfolio.repository.EducacionRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
@@ -78,15 +78,15 @@ public class EducacionController {
         if(errors.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Educacion educacionUpdate = educacionService.buscarId(id).get();
-        educacionUpdate.setSchoolname(educacion.getSchoolname());
+        educacionUpdate.setSchoolName(educacion.getSchoolName());
         educacionUpdate.setTitle(educacion.getTitle());
         educacionUpdate.setLogo(educacion.getLogo());
-        educacionUpdate.setStartdate(educacion.getStartdate());
-        educacionUpdate.setEnddate(educacion.getEnddate());
-        educacionUpdate.setTypeofschool(educacion.getTypeofschool());
-        educacionUpdate.setStudiesstatus(educacion.getStudiesstatus());
-        educacionUpdate.setEducationdescription(educacion.getEducationdescription());
-        educacionUpdate.setCurrenteducation(educacion.getCurrenteducation());
+        educacionUpdate.setStartDate(educacion.getStartDate());
+        educacionUpdate.setEndDate(educacion.getEndDate());
+        educacionUpdate.setTypeOfSchool(educacion.getTypeOfSchool());
+        educacionUpdate.setStudiesStatus(educacion.getStudiesStatus());
+        educacionUpdate.setEducationDescription(educacion.getEducationDescription());
+        educacionUpdate.setCurrentEducation(educacion.getCurrentEducation());
         educacionService.crearEducacion(educacionUpdate);
         return new ResponseEntity(new Mensaje("Educación actualizada."), HttpStatus.CREATED);
     }

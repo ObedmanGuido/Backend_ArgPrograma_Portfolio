@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.entity;
+package com.PortfolioObedmanGuido.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Range;
 
 @Getter @Setter
 @Entity
@@ -20,7 +19,7 @@ public class Educacion {
     private Long id;
     @NotEmpty
     @Column(name="schoolname", nullable = false)
-    private String schoolname;
+    private String schoolName;
     @NotEmpty
     @Column(name="title", nullable = false)
     private String title;
@@ -28,21 +27,21 @@ public class Educacion {
     private String logo;
     @NotNull
     @Column(name="startdate", nullable = false)
-    private LocalDate startdate;
+    private LocalDate startDate;
     @NotNull
     @Column(name="enddate", nullable = false)
-    private LocalDate enddate;
+    private LocalDate endDate;
     @NotEmpty
     @Column(name="typeofschool", nullable = false)
-    private String typeofschool;
+    private String typeOfSchool;
     @NotEmpty
     @Column(name="studiesstatus", nullable = false)
-    private String studiesstatus;
+    private String studiesStatus;
     @NotEmpty
     @Column(name="educationdescription", nullable = false, length = 1000)
-    private String educationdescription;
+    private String educationDescription;
     @Column(name="currenteducation")
-    private Boolean currenteducation;
+    private Boolean currentEducation;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -52,18 +51,18 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(Long id, String schoolname, String title, String logo, LocalDate startdate, LocalDate enddate, String typeofschool,
-            String studiesstatus, String educationdescription, Boolean currenteducation) {
+    public Educacion(Long id, String schoolName, String title, String logo, LocalDate startDate, LocalDate endDate, String typeOfSchool,
+            String studiesStatus, String educationDescription, Boolean currentEducation) {
         this.id = id;
-        this.schoolname = schoolname;
+        this.schoolName = schoolName;
         this.title = title;
         this.logo = logo;
-        this.startdate = startdate;
-        this.enddate = enddate;
-        this.typeofschool = typeofschool;
-        this.studiesstatus = studiesstatus;
-        this.educationdescription = educationdescription;
-        this.currenteducation = currenteducation;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.typeOfSchool = typeOfSchool;
+        this.studiesStatus = studiesStatus;
+        this.educationDescription = educationDescription;
+        this.currentEducation = currentEducation;
     }
     
 }

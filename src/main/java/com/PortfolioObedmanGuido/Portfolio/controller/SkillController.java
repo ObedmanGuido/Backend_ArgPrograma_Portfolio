@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Skill;
+import com.PortfolioObedmanGuido.Portfolio.model.Skill;
 import com.PortfolioObedmanGuido.Portfolio.exception.ResourceNotFoundException;
 import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.SkillRepository;
@@ -73,14 +73,14 @@ public class SkillController {
     public ResponseEntity<?> update(@Valid @RequestBody Skill skill, @PathVariable("id") Long id, Errors errors){
         if(!skillService.existeId(id))
             return new ResponseEntity(new Mensaje("El skill no existe (id)."), HttpStatus.NOT_FOUND);
-        if(StringUtils.isBlank(skill.getSkillname()))
-            return new ResponseEntity(new Mensaje("Tiene que poner el nombre del skill (skillname)."), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(skill.getSkillName()))
+            return new ResponseEntity(new Mensaje("Tiene que poner el nombre del skill (skillName)."), HttpStatus.BAD_REQUEST);
         if (errors.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Skill skillUpdate = skillService.buscarId(id).get();
-        skillUpdate.setSkillname(skill.getSkillname());
-        skillUpdate.setLevelnumber(skill.getLevelnumber());
-        skillUpdate.setSkilldescription(skill.getSkilldescription());
+        skillUpdate.setSkillName(skill.getSkillName());
+        skillUpdate.setLevelNumber(skill.getLevelNumber());
+        skillUpdate.setSkillDescription(skill.getSkillDescription());
         skillUpdate.setSkill_tipo(skill.getSkill_tipo());
         skillService.crearSkill(skillUpdate);
         return new ResponseEntity(new Mensaje("Skill actualizado."), HttpStatus.CREATED);

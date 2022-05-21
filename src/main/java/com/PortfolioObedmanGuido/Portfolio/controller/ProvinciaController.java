@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Provincia;
+import com.PortfolioObedmanGuido.Portfolio.model.Provincia;
 import com.PortfolioObedmanGuido.Portfolio.repository.PersonaRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.ProvinciaRepository;
 import com.PortfolioObedmanGuido.Portfolio.service.PersonaService;
@@ -59,9 +59,9 @@ public class ProvinciaController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/provincia/nuevo")
     public ResponseEntity<?> create(@RequestBody Provincia provincia){
-        if(StringUtils.isBlank(provincia.getProvincename()))
+        if(StringUtils.isBlank(provincia.getProvinceName()))
             return new ResponseEntity(new Mensaje("Tiene que poner el nombre."), HttpStatus.BAD_REQUEST);
-        if(provinciaService.existeProvinciaNombre(provincia.getProvincename()))
+        if(provinciaService.existeProvinciaNombre(provincia.getProvinceName()))
             return new ResponseEntity(new Mensaje("Esa provincia ya existe."), HttpStatus.BAD_REQUEST);
         provinciaService.crearProvincia(provincia);
         return new ResponseEntity(new Mensaje("Provincia creada."), HttpStatus.CREATED);
@@ -72,12 +72,12 @@ public class ProvinciaController {
     public ResponseEntity<?> update(@Valid @RequestBody Provincia provincia, @PathVariable("id") Long id, Errors errors){
         if(!provinciaService.existeId(id))
             return new ResponseEntity(new Mensaje("La provincia no existe (id)."), HttpStatus.NOT_FOUND);
-        if(StringUtils.isBlank(provincia.getProvincename()))
-            return new ResponseEntity(new Mensaje("Tiene que poner el nombre (provincename)."), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(provincia.getProvinceName()))
+            return new ResponseEntity(new Mensaje("Tiene que poner el nombre (provinceName)."), HttpStatus.BAD_REQUEST);
         if(errors.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Provincia provinciaUpdate = provinciaService.buscarId(id).get();
-        provinciaUpdate.setProvincename(provincia.getProvincename());
+        provinciaUpdate.setProvinceName(provincia.getProvinceName());
         provinciaService.crearProvincia(provinciaUpdate);
         return new ResponseEntity(new Mensaje("Provincia actualizada."), HttpStatus.CREATED);
     }

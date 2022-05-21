@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Proyecto;
+import com.PortfolioObedmanGuido.Portfolio.model.Proyecto;
 import java.util.List;
 import java.util.Optional;
 

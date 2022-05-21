@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Persona;
+import com.PortfolioObedmanGuido.Portfolio.model.Persona;
 import com.PortfolioObedmanGuido.Portfolio.service.PersonaService;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
@@ -53,12 +53,12 @@ public class PersonaController {
         Persona personaUpdate = personaService.buscarId(id).get();
         personaUpdate.setName(persona.getName());
         personaUpdate.setSurname(persona.getSurname());
-        personaUpdate.setProfilepicture(persona.getProfilepicture());
+        personaUpdate.setProfilePicture(persona.getProfilePicture());
         personaUpdate.setTitle(persona.getTitle());
         personaUpdate.setPosition(persona.getPosition());
-        personaUpdate.setBannerpicture(persona.getBannerpicture());
-        personaUpdate.setAboutpersona(persona.getAboutpersona());
-        personaUpdate.setDateofbirth(persona.getDateofbirth());
+        personaUpdate.setBannerPicture(persona.getBannerPicture());
+        personaUpdate.setAboutPersona(persona.getAboutPersona());
+        personaUpdate.setDateOfBirth(persona.getDateOfBirth());
         personaUpdate.setTelephone(persona.getTelephone());
         personaUpdate.setEmail(persona.getEmail());
         personaUpdate.setProvincia(persona.getProvincia());

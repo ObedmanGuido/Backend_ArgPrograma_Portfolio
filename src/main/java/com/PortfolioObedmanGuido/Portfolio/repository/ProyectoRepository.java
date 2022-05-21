@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.repository;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Proyecto;
+import com.PortfolioObedmanGuido.Portfolio.model.Proyecto;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProyectoRepository extends JpaRepository<Proyecto, Long>{
-    Optional<Proyecto> findByProjectname(String pn);
-    boolean existsByProjectname(String pn);
+    Optional<Proyecto> findByProjectName(String pn);
+    boolean existsByProjectName(String pn);
     List<Proyecto> findByPersonaId(Long pnId);
     
     @Transactional

@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.service;
 
-import com.PortfolioObedmanGuido.Portfolio.entity.Proyecto;
+import com.PortfolioObedmanGuido.Portfolio.model.Proyecto;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class ProyectoService implements IProyectoService{
 
     @Override
     public Optional<Proyecto> buscarProyectoNombre(String pn) {
-        return proyectoRepository.findByProjectname(pn);
+        return proyectoRepository.findByProjectName(pn);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ProyectoService implements IProyectoService{
 
     @Override
     public boolean existeProyectoNombre(String pn) {
-        return proyectoRepository.existsByProjectname(pn);
+        return proyectoRepository.existsByProjectName(pn);
     }
 
     @Override

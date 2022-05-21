@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.controller;
 
 import com.PortfolioObedmanGuido.Portfolio.DTO.Mensaje;
-import com.PortfolioObedmanGuido.Portfolio.entity.Skill_Tipo;
+import com.PortfolioObedmanGuido.Portfolio.model.Skill_Tipo;
 import com.PortfolioObedmanGuido.Portfolio.repository.SkillRepository;
 import com.PortfolioObedmanGuido.Portfolio.repository.Skill_TipoRepository;
 import com.PortfolioObedmanGuido.Portfolio.service.SkillService;
@@ -59,9 +59,9 @@ public class Skill_TipoController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/skill/tipo/nuevo")
     public ResponseEntity<?> create(@RequestBody Skill_Tipo skill_Tipo){
-        if(StringUtils.isBlank(skill_Tipo.getTypename()))
+        if(StringUtils.isBlank(skill_Tipo.getTypeName()))
             return new ResponseEntity(new Mensaje("Tiene que poner el nombre."), HttpStatus.BAD_REQUEST);
-        if(skill_TipoService.existeTipoNombre(skill_Tipo.getTypename()))
+        if(skill_TipoService.existeTipoNombre(skill_Tipo.getTypeName()))
             return new ResponseEntity(new Mensaje("Ese tipo de skill ya existe."), HttpStatus.BAD_REQUEST);
         skill_TipoService.crearSkill_Tipo(skill_Tipo);
         return new ResponseEntity(new Mensaje("Tipo de skill creado."), HttpStatus.CREATED);
@@ -72,12 +72,12 @@ public class Skill_TipoController {
     public ResponseEntity<?> update(@Valid @RequestBody Skill_Tipo skill_Tipo, @PathVariable("id") Long id, Errors errors){
         if(!skill_TipoService.existeId(id))
             return new ResponseEntity(new Mensaje("El tipo de skill no existe (id)."), HttpStatus.NOT_FOUND);
-        if(StringUtils.isBlank(skill_Tipo.getTypename()))
-            return new ResponseEntity(new Mensaje("Tiene que poner el nombre (typename)."), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(skill_Tipo.getTypeName()))
+            return new ResponseEntity(new Mensaje("Tiene que poner el nombre (typeName)."), HttpStatus.BAD_REQUEST);
         if(errors.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         Skill_Tipo skill_TipoUpdate = skill_TipoService.buscarId(id).get();
-        skill_TipoUpdate.setTypename(skill_Tipo.getTypename());
+        skill_TipoUpdate.setTypeName(skill_Tipo.getTypeName());
         skill_TipoService.crearSkill_Tipo(skill_TipoUpdate);
         return new ResponseEntity(new Mensaje("Tipo de skill actualizado."), HttpStatus.CREATED);
     }

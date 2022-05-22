@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.security.entity;
+package com.PortfolioObedmanGuido.Portfolio.security.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

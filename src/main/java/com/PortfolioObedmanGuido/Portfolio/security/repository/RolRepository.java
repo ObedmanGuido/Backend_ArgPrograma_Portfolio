@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.security.repository;
 
-import com.PortfolioObedmanGuido.Portfolio.security.entity.Rol;
+import com.PortfolioObedmanGuido.Portfolio.security.model.Rol;
 import com.PortfolioObedmanGuido.Portfolio.security.enums.RolNombre;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

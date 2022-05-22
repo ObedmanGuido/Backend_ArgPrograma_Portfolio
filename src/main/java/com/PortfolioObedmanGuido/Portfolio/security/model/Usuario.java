@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.security.entity;
+package com.PortfolioObedmanGuido.Portfolio.security.model;
 
 import com.PortfolioObedmanGuido.Portfolio.model.Persona;
 import com.fasterxml.jackson.annotation.JsonBackReference;

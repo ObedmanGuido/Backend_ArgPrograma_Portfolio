@@ -1,6 +1,6 @@
 /*package com.PortfolioObedmanGuido.Portfolio.util;
 
-import com.PortfolioObedmanGuido.Portfolio.security.entity.Rol;
+import com.PortfolioObedmanGuido.Portfolio.security.model.Rol;
 import com.PortfolioObedmanGuido.Portfolio.security.enums.RolNombre;
 import com.PortfolioObedmanGuido.Portfolio.security.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;

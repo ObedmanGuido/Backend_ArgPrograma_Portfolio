@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.security.service;
 
-import com.PortfolioObedmanGuido.Portfolio.security.entity.Usuario;
+import com.PortfolioObedmanGuido.Portfolio.security.model.Usuario;
 import com.PortfolioObedmanGuido.Portfolio.security.repository.UsuarioRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

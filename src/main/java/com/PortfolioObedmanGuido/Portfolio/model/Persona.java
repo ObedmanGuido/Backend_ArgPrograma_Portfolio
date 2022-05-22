@@ -1,6 +1,6 @@
 package com.PortfolioObedmanGuido.Portfolio.model;
 
-import com.PortfolioObedmanGuido.Portfolio.security.entity.Usuario;
+import com.PortfolioObedmanGuido.Portfolio.security.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

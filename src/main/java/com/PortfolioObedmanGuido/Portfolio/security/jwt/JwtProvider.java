@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.security.jwt;
 
 import com.PortfolioObedmanGuido.Portfolio.security.DTO.JwtDto;
-import com.PortfolioObedmanGuido.Portfolio.security.entity.UsuarioPrincipal;
+import com.PortfolioObedmanGuido.Portfolio.security.model.UsuarioPrincipal;
 import io.jsonwebtoken.*;
 import java.util.Date;
 import java.util.List;

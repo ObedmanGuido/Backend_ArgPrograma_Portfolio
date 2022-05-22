@@ -1,4 +1,4 @@
-package com.PortfolioObedmanGuido.Portfolio.security.entity;
+package com.PortfolioObedmanGuido.Portfolio.security.model;
 
 import com.PortfolioObedmanGuido.Portfolio.security.enums.RolNombre;
 import javax.persistence.Entity;

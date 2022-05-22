@@ -1,7 +1,7 @@
 package com.PortfolioObedmanGuido.Portfolio.security.service;
 
-import com.PortfolioObedmanGuido.Portfolio.security.entity.Usuario;
-import com.PortfolioObedmanGuido.Portfolio.security.entity.UsuarioPrincipal;
+import com.PortfolioObedmanGuido.Portfolio.security.model.Usuario;
+import com.PortfolioObedmanGuido.Portfolio.security.model.UsuarioPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

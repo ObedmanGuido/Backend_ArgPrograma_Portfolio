@@ -18,7 +18,7 @@ public class Skill_Tipo {
     @Column(name="typename", nullable = false)
     private String typeName;
     @OneToMany(mappedBy = "skill_tipo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference //No mostrar las personas en provincia.
+    @JsonBackReference //No mostrar los skills en skill_tipo.
     private List<Skill> skill;
 
     public Skill_Tipo() {

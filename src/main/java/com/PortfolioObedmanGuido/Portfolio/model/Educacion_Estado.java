@@ -23,7 +23,7 @@ public class Educacion_Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @Column(name="educationStatus", nullable = false)
+    @Column(name="educationstatus", nullable = false)
     private String educationStatus;
     @OneToMany(mappedBy = "educacion_estado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference //No mostrar las educaciones en educacion_tipo.

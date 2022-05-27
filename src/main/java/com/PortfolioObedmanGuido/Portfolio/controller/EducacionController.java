@@ -83,10 +83,10 @@ public class EducacionController {
         educacionUpdate.setLogo(educacion.getLogo());
         educacionUpdate.setStartDate(educacion.getStartDate());
         educacionUpdate.setEndDate(educacion.getEndDate());
-        educacionUpdate.setStudiesStatus(educacion.getStudiesStatus());
         educacionUpdate.setEducationDescription(educacion.getEducationDescription());
         educacionUpdate.setCurrentEducation(educacion.getCurrentEducation());
         educacionUpdate.setEducacion_tipo(educacion.getEducacion_tipo());
+        educacionUpdate.setEducacion_estado(educacion.getEducacion_estado());
         educacionService.crearEducacion(educacionUpdate);
         return new ResponseEntity(new Mensaje("Educación actualizada."), HttpStatus.CREATED);
     }

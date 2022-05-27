@@ -32,9 +32,6 @@ public class Educacion {
     @Column(name="enddate", nullable = false)
     private LocalDate endDate;
     @NotEmpty
-    @Column(name="studiesstatus", nullable = false)
-    private String studiesStatus;
-    @NotEmpty
     @Column(name="educationdescription", nullable = false, length = 1000)
     private String educationDescription;
     @Column(name="currenteducation")
@@ -42,6 +39,9 @@ public class Educacion {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "educacion_tipo_id", nullable = false)
     private Educacion_Tipo educacion_tipo;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "educacion_estado_id", nullable = false)
+    private Educacion_Estado educacion_estado;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "persona_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -51,18 +51,18 @@ public class Educacion {
     public Educacion() {
     }
 
-    public Educacion(Long id, String schoolName, String title, String logo, LocalDate startDate, LocalDate endDate, String studiesStatus,
-            String educationDescription, Boolean currentEducation, Educacion_Tipo educacion_tipo) {
+    public Educacion(Long id, String schoolName, String title, String logo, LocalDate startDate, LocalDate endDate, String educationDescription,
+            Boolean currentEducation, Educacion_Tipo educacion_tipo, Educacion_Estado educacion_estado) {
         this.id = id;
         this.schoolName = schoolName;
         this.title = title;
         this.logo = logo;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.studiesStatus = studiesStatus;
         this.educationDescription = educationDescription;
         this.currentEducation = currentEducation;
         this.educacion_tipo = educacion_tipo;
+        this.educacion_estado = educacion_estado;
     }
     
 }

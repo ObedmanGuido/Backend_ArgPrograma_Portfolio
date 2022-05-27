@@ -1,20 +1,25 @@
 /*package com.PortfolioObedmanGuido.Portfolio.util;
 
+import com.PortfolioObedmanGuido.Portfolio.model.Educacion_Estado;
 import com.PortfolioObedmanGuido.Portfolio.model.Educacion_Tipo;
 import com.PortfolioObedmanGuido.Portfolio.service.Educacion_TipoService;
 import com.PortfolioObedmanGuido.Portfolio.model.Skill_Tipo;
+import com.PortfolioObedmanGuido.Portfolio.service.Educacion_EstadoService;
 import com.PortfolioObedmanGuido.Portfolio.service.Skill_TipoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreateTipos_Skill_Educacion implements CommandLineRunner{
+public class CreateTiposEstados implements CommandLineRunner{
     @Autowired
     Skill_TipoService skill_TipoService;
     
     @Autowired
     Educacion_TipoService educacion_TipoService;
+    
+    @Autowired
+    Educacion_EstadoService educacion_EstadoService;
     
     @Override
     public void run(String... args) throws Exception {
@@ -44,5 +49,11 @@ public class CreateTipos_Skill_Educacion implements CommandLineRunner{
         educacion_TipoService.crearEducacion_Tipo(Doctorado);
         Educacion_Tipo Otro = new Educacion_Tipo(null, "Otro");
         educacion_TipoService.crearEducacion_Tipo(Otro);
+        Educacion_Estado Graduado = new Educacion_Estado(null, "Graduado");
+        educacion_EstadoService.crearEducacion_Estado(Graduado);
+        Educacion_Estado EnCurso = new Educacion_Estado(null, "En Curso");
+        educacion_EstadoService.crearEducacion_Estado(EnCurso);
+        Educacion_Estado Abandonado = new Educacion_Estado(null, "Abandonado");
+        educacion_EstadoService.crearEducacion_Estado(Abandonado);
     }
-} Solo se usa la primera vez que se enciende el backend*/
+} /*Solo se usa la primera vez que se enciende el backend*/
